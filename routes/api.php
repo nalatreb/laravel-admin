@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\WineController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,28 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::group(['prefix' => 'v1'], function () {
-    Route::get('recepies', function () {
-        return response()->json([
-            [
-                'id' => 1,
-                'name' => 'Kutya',
-                'text' => 'wuff wuff'
-            ],
-            [
-                'id' => 2,
-                'name' => 'Cica',
-                'text' => 'mew mew'
-            ],
-            [
-                'id' => 3,
-                'name' => 'Teknoc',
-                'text' => '...'
-            ],
-        ]);
-    });
+Route::prefix('v1')->group(function () {
+    Route::resource('wines', WineController::class)->only(['index', 'show']);
 });
