@@ -14,8 +14,8 @@ class WineController extends Controller
         return WineResource::collection(Wine::paginate(request('per_page')));
     }
 
-    public function show($id): WineResource
+    public function show(Wine $wine): WineResource
     {
-        return new WineResource(Wine::findOrFail($id));
+        return new WineResource($wine);
     }
 }
