@@ -2,6 +2,7 @@
 
 ## Instruction
 
+> If you are using `laravel sail`, **DON'T** forget to create your `.env` file
 1. Run `php artisan migrate`
 2. Run `php artisan db:seed --class="WineSeeder"`
 
